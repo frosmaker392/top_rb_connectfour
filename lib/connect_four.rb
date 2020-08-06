@@ -67,7 +67,7 @@ class ConnectFour
     check_if_4inarow(col, row, 1, 1)
   end
 
-  # Checks if 4 elements in an upper diagonal from @grid[col][row] are the same
+  # Checks if 4 elements in an lower diagonal from @grid[col][row] are the same
   def is_lower_diagonal_four?(col, row)
     return false if @grid[col][row].nil? || col > 3 || row < 3
 
