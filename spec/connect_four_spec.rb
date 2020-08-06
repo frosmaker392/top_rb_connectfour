@@ -72,20 +72,20 @@ describe ConnectFour do
     end
   end
 
-  desribe "#evaluate" do
+  describe "#evaluate" do
     it "finds 4 numbers in a horizontal row and returns the number" do
       c4 = ConnectFour.new
       c4.insert(1, 1)
       c4.insert(1, 2)
       c4.insert(1, 3)
       c4.insert(1, 4)
-      expect(c4.evalute).to eql(1)
+      expect(c4.evaluate).to eql(1)
     end
 
     it "finds 4 numbers in a vertical row and returns the number" do
       c4 = ConnectFour.new
       4.times { c4.insert(2, 1) }
-      expect(c4.evalute).to eql(2)
+      expect(c4.evaluate).to eql(2)
     end
 
     it "finds 4 numbers in a upper diagonal row and returns the number" do
@@ -100,7 +100,7 @@ describe ConnectFour do
       c4.insert(2, 4)
       c4.insert(2, 4)
       c4.insert(1, 4)
-      expect(c4.evalute).to eql(1)
+      expect(c4.evaluate).to eql(1)
     end
 
     it "finds 4 numbers in a lower diagonal row and returns the number" do
@@ -115,23 +115,23 @@ describe ConnectFour do
       c4.insert(1, 5)
       c4.insert(2, 5)
       c4.insert(2, 6)
-      expect(c4.evalute).to eql(2)
+      expect(c4.evaluate).to eql(2)
     end
 
     it "returns -1 (continue) if no 4-in-a-rows are found" do
       c4 = ConnectFour.new
-      c4,insert(1, 0)
+      c4.insert(1, 0)
       c4.insert(1, 1)
       c4.insert(1, 2)
       c4.insert(2, 3)
       c4.insert(1, 3)
       c4.insert(2, 6)
-      expect(c4.evalute).to eql(-1)
+      expect(c4.evaluate).to eql(-1)
     end
 
     it "returns -1 for an empty grid" do
       c4 = ConnectFour.new
-      expect(c4.evalute).to eql(-1)
+      expect(c4.evaluate).to eql(-1)
     end
   end
 end
