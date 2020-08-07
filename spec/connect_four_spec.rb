@@ -167,5 +167,17 @@ describe ConnectFour do
       c4 = ConnectFour.new
       expect(c4.evaluate).to eql(-1)
     end
+
+    it "returns 0 for a draw (no 4-in-a-rows)" do
+      c4 = ConnectFour.new
+      c4.insert_arr([1, 1, 2, 1, 2, 1], 0)
+      c4.insert_arr([1, 1, 2, 1, 2, 1], 1)
+      c4.insert_arr([2, 2, 1, 2, 2, 1], 2)
+      c4.insert_arr([2, 2, 1, 2, 1, 2], 3)
+      c4.insert_arr([1, 1, 2, 2, 2, 1], 4)
+      c4.insert_arr([2, 1, 2, 1, 2, 1], 5)
+      c4.insert_arr([1, 2, 1, 2, 2, 1], 6)
+      expect(c4.evaluate).to eql(0)
+    end
   end
 end

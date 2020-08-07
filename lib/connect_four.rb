@@ -41,6 +41,7 @@ class ConnectFour
       end
     end
 
+    return 0 if valid_columns.empty?
     return -1
   end
 
