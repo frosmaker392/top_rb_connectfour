@@ -19,6 +19,12 @@ class ConnectFour
       return
     end
   end
+
+  def insert_arr(arr, column)
+    arr.each do |num|
+      insert(num, column)
+    end
+  end
   
   # Returns the number if there is a 4-in-a-row of that number,
   # else returns 0 if none are found but grid is full,
