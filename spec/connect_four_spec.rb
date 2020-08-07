@@ -70,6 +70,40 @@ describe ConnectFour do
                               [1, nil, nil, nil, nil, nil], 
                               [1, 2, 1, 2, 1, 2]])
     end
+    
+    it "ensures that the column is deleted from @valid_columns once full" do
+      c4 = ConnectFour.new
+      6.times { c4.insert(1, 4) }
+      expect(c4.valid_columns).to eql([0, 1, 2, 3, 5, 6])
+    end
+  end
+
+  describe "#insert_arr" do
+    it "inserts an array into a column (for testing purposes)" do
+      c4 = ConnectFour.new
+      c4.insert_arr([1,1,1,1], 3)
+      expect(c4.grid).to eql([[nil, nil, nil, nil, nil, nil], 
+                              [nil, nil, nil, nil, nil, nil],
+                              [nil, nil, nil, nil, nil, nil],
+                              [1, 1, 1, 1, nil, nil], 
+                              [nil, nil, nil, nil, nil, nil], 
+                              [nil, nil, nil, nil, nil, nil], 
+                              [nil, nil, nil, nil, nil, nil]])
+    end
+
+    it "only inserts up to when the column is full" do
+      c4 = ConnectFour.new
+      c4.insert(2, 2)
+      c4.insert(1, 2)
+      c4.insert_arr([1,1,1,2,1,2], 2)
+      expect(c4.grid).to eql([[nil, nil, nil, nil, nil, nil], 
+                              [nil, nil, nil, nil, nil, nil],
+                              [2, 1, 1, 1, 1, 2],
+                              [nil, nil, nil, nil, nil, nil], 
+                              [nil, nil, nil, nil, nil, nil], 
+                              [nil, nil, nil, nil, nil, nil], 
+                              [nil, nil, nil, nil, nil, nil]])
+    end
   end
 
   describe "#evaluate" do
