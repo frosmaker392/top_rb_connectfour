@@ -180,4 +180,46 @@ describe ConnectFour do
       expect(c4.evaluate).to eql(0)
     end
   end
+
+  describe "#show_grid" do
+    it "returns a string that shows the grid in a presentable manner" do
+      c4 = ConnectFour.new
+      c4.insert(1, 1)
+      c4.insert_arr([1, 2, 1], 2)
+      c4.insert(2, 3)
+      c4.insert_arr([1, 1, 2, 2], 5)
+      expect(c4.show_grid).to eql("             \n"\
+                                  "             \n"\
+                                  "          2  \n"\
+                                  "    1     2  \n"\
+                                  "    2     1  \n"\
+                                  "  1 1 2   1  \n")
+    end
+
+    it "replaces 1 and 2 with custom characters if specified in the params" do
+      c4 = ConnectFour.new
+      c4.insert(2, 0)
+      c4.insert_arr([1, 1, 2, 2, 1], 1)
+      c4.insert_arr([1, 2, 1], 2)
+      c4.insert_arr([2, 2, 2, 1], 3)
+      c4.insert_arr([1, 1, 1, 2], 4)
+      expect(c4.show_grid('A', 'B')).to eql("             \n"\
+                                            "  A          \n"\
+                                            "  B   A B    \n"\
+                                            "  B A B A    \n"\
+                                            "  A B B A    \n"\
+                                            "B A A B A    \n")
+    end
+
+    it "writes the column numbers below the grid when show_column_num is true" do
+      c4 = ConnectFour.new
+      expect(c4.show_grid('a', 'b', true)).to eql("             \n"\
+                                                  "             \n"\
+                                                  "             \n"\
+                                                  "             \n"\
+                                                  "             \n"\
+                                                  "             \n\n"\
+                                                  "1 2 3 4 5 6 7\n")
+    end
+  end
 end
