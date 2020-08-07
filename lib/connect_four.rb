@@ -45,6 +45,29 @@ class ConnectFour
     return -1
   end
 
+  # Returns a string which shows the whole grid like the actual connect 4 game, 
+  # can replace 1 and 2 with custom characters, and show the number row
+  def show_grid(replace_1 = nil, replace_2 = nil, show_column_num = false)
+    out = ""
+    6.times do |x|
+      x = 5 - x
+      7.times do |y|
+        grid_el = @grid[y][x]
+
+        if grid_el == 1 then out << (replace_1.nil? ? '1' : replace_1)
+        elsif grid_el == 2 then out << (replace_2.nil? ? '2' : replace_2)
+        else out << ' ' end
+
+        out << ' ' unless y == 6
+      end
+
+      out << "\n"
+    end
+
+    out << "\n1 2 3 4 5 6 7\n" if show_column_num
+    out
+  end
+
   private
 
   # Generates an empty grid of size 6 x 7, with coordinates (y, x)
