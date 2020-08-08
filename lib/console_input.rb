@@ -1,7 +1,7 @@
 module Input
   # Get user input and repeat prompt with try_again_msg 
   # if validator_lambda throws an exception with input
-  def get_valid_input(validator_lambda, try_again_msg = nil)
+  def Input.get_valid_input(validator_lambda, try_again_msg = nil)
     try_again_msg = "Try again : " if try_again_msg.nil?
 
     valid = false
@@ -22,7 +22,7 @@ module Input
     input
   end
 
-  def range_lambda(range, err_msg = nil)
+  def Input.range_lambda(range, err_msg = nil)
     err_msg = "Out of range!" if err_msg.nil?
 
     return lambda do |value|
