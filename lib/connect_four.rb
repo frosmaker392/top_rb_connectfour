@@ -48,9 +48,10 @@ class ConnectFour
   # Returns a string which shows the whole grid like the actual connect 4 game, 
   # can replace 1 and 2 with custom characters, and show the number row
   def show_grid(replace_1 = nil, replace_2 = nil, show_column_num = false)
-    out = ""
+    out = "┌─────────────┐\n"
     6.times do |x|
       x = 5 - x
+      out << "│"
       7.times do |y|
         grid_el = @grid[y][x]
 
@@ -61,10 +62,11 @@ class ConnectFour
         out << ' ' unless y == 6
       end
 
-      out << "\n"
+      out << "│\n"
     end
 
-    out << "\n1 2 3 4 5 6 7\n" if show_column_num
+    out << "└─────────────┘\n"
+    out << " 1 2 3 4 5 6 7\n" if show_column_num
     out
   end
 
